@@ -2,6 +2,13 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
 
+
+<img width="1910" height="1018" alt="image" src="https://github.com/user-attachments/assets/f69c3017-fedd-4e40-b821-1f8970d7671a" />
+
+Sample API Details:
+https://www.freeprojectapi.com/api.html 
+
+
 ## Development server
 
 To start a local development server, run:
