@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-3">
+    <div class="p-4" [ngClass]="myClassName">
+      div 1
+    </div>
+  </div>
+  <div class="col-3">
+     <div>
+        <input type="text" class="form-control" [(ngModel)]="myClassName">
+    </div>
+  </div>
+  <div class="col-3">
+    <button class="btn"  (click)="isActive=!isActive"
+    [ngClass]="isActive == true ? 'btn-success':'btn-danger'">
+        status
+    </button>
+  </div>
+  <div class="col-3"
+   [ngClass]="productPrice>=500 ? 'text-primary' : 'text-danger'">
+    ${{productPrice}}
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <input type="number" [(ngModel)]="productPrice">
+    </div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-3">
+    <div class="p-4" [ngStyle]="{'background-color':divBlackColor}">
+      div 2
+    </div>
+  </div>
+  <div class="col-3">
+     <div>
+        <input type="text" class="form-control" [(ngModel)]="divBlackColor">
+    </div>
+  </div>
+  <div class="col-3">
+    <button class="btn"  (click)="isActive=!isActive"
+    [ngStyle]="myCss">
+        newstatus
+    </button>
+  </div>
+</div>

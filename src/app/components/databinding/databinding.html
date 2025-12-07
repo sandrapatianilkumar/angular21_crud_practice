@@ -1,0 +1,64 @@
+<p>databinding works!</p>
+<table>
+    <thead>
+        <tr>
+            <td>Testcourse</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div>{{courseName}}</div>
+            </td>
+            <td>
+                <div>{{cityName}}</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" [value]="courseName">
+            </td>
+            <td>
+                {{courseName}}
+            </td>
+            <td>
+                <div [class]="className">
+                    {{courseName}}
+                </div>
+            </td>
+            <td>
+                <input [type]="inputText"  name="cityName1" id="1">
+            </td>
+            <td>
+                <button (click)="welcomeMessage()">show me</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="City">City</label>
+                <br>
+                <select (change)="startChanged()" name="cityDropdown" id="cityDropdown">
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Pune">Pune</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" [(ngModel)] = courseName>
+            </td>
+        </tr>
+        <tr>
+            <button (click)="changeCourse('java')">
+                Change course to java
+            </button>
+        </tr>
+        <tr>
+            <button (click)="changeCourse('dot net')">
+                change course to dot net
+            </button>
+        </tr>
+    </tbody>
+</table>

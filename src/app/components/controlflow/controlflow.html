@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isOfferCodeAVl" name="isOfferCodeAVl">Do you have offer code
+        <br>
+        -- {{isOfferCodeAVl}}
+    </div>
+    @if(isOfferCodeAVl==true) {
+    <div class="col-3">
+        <input type="text" class="form-control" placeholder="Enter offer code">
+    </div>
+    }
+</div>
+<hr>
+<div class="row">
+    @if (isSuccessDivVisible()) {
+    <div class="bg-success p-3">
+        Success Div
+    </div>
+    } @else {
+    <div class="bg-danger p-3">
+        Error Div
+    </div>
+    }
+    <div class="col-3">
+        <button class="btn btn-success" (click)="toggleDivVisibility()">Toggle</button>
+    </div>
+</div>

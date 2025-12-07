@@ -1,0 +1,98 @@
+<div class="container mt-4">
+    <div class="row g-4">
+
+        <!-- ========================= TABLE (COL-8) ========================= -->
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning">
+                    <h5 class="m-0">Batch List</h5>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-bordered table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Batch Name</th>
+                                <th>Created Date</th>
+                                <th style="width: 150px;">Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @for (b of batchList(); track $index) {
+                            <tr>
+                                <th scope="row">{{ $index + 1 }}</th>
+                                <td>{{ b.batchName }}</td>
+                                <td>{{ b.createdDate | date: 'yyyy-MM-dd' }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-2" (click)="onEditBatch(b)">Edit</button>
+                                    <button class="btn btn-sm btn-danger"
+                                        (click)="onDeleteBatch(b.batchId)">Delete</button>
+                                </td>
+                            </tr>
+                            }
+
+                            <tr *ngIf="batchList().length === 0">
+                                <td colspan="4" class="text-center text-muted">No batches available...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================= FORM (COL-4) ========================= -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning">
+                    <h5 class="m-0">{{ isEdit ? 'Edit Batch' : 'Add Batch' }}</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <form (ngSubmit)="OnSaveOrUpdateBatch()" #batchForm="ngForm">
+
+                        <!-- Batch ID (read-only) -->
+                        <!-- <div class="mb-3">
+              <label class="form-label">Batch ID</label>
+              <input type="number"
+                     class="form-control"
+                     name="batchId"
+                     [(ngModel)]="batch.batchId"
+                     >
+            </div> -->
+
+                        <!-- Batch Name -->
+                        <div class="mb-3">
+                            <label class="form-label">Batch Name</label>
+                            <input type="text" class="form-control" name="batchName" [(ngModel)]="newBatchObj.batchName"
+                                required>
+                        </div>
+
+                        <!-- Created Date -->
+                        <!-- <div class="mb-3">
+                            <label class="form-label">Created Date</label>
+                            <input type="date" class="form-control" name="createdDate"
+                                [(ngModel)]="newBatchObj.createdDate">
+                        </div> -->
+
+                        <!-- Action buttons -->
+                        <div class="d-flex gap-2 mt-3">
+                            <button type="submit" class="btn btn-success w-50">
+                                {{ isEdit ? 'Update' : 'Add' }}
+                            </button>
+
+                            <button type="button" class="btn btn-secondary w-50" (click)="resetForm()">
+                                Cancel
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

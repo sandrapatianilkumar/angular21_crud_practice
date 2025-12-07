@@ -1,0 +1,131 @@
+<div class="container mt-4">
+
+    <div class="row g-4">
+
+        <!-- =========================================
+         LEFT SIDE – DATA TABLE (col-7)
+    ========================================== -->
+        <div class="col-md-8">
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning">
+                    <h5 class="mb-0">Competition List</h5>
+                </div>
+
+                <div class="card-body p-0">
+
+                    <table class="table table-sm table-light table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <!-- <th>Start</th>
+                                <th>End</th> -->
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <!-- SAMPLE ROW -->
+                            @for (item of competitionList(); track $index) {
+                            <tr>
+                                <td>{{$index + 1}}</td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.description}}</td>
+                                <td>{{item.status}}</td>
+                                <!-- <td>{{item.startDate}}</td>
+                                <td>{{item.endDate}}</td> -->
+                                <td class="text-center">
+                                    <button (click)="onEdit(item)" class="btn btn-sm btn-warning me-1">Edit</button>
+                                    <button (click)="deleteCompetition(item.competitionId)"
+                                        class="btn btn-sm btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                            }
+
+
+                            <!-- More rows dynamically -->
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- =========================================
+         RIGHT SIDE – REACTIVE FORM (col-5)
+    ========================================== -->
+        <div class="col-md-4">
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning">
+                    <h5 class="mb-0">Add / Update Competition</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <form id="competitionForm" [formGroup]="projectForm">
+
+                        <div class="mb-3">
+                            <label class="form-label">Competition ID</label>
+                            <input type="number" class="form-control" formControlName="competitionId"
+                                placeholder="Enter ID">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Title</label>
+                            <input type="text" class="form-control" formControlName="title" placeholder="Enter title">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea rows="3" class="form-control" formControlName="description"
+                                placeholder="Enter description"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Start Date</label>
+                            <input type="datetime-local" class="form-control" formControlName="startDate">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">End Date</label>
+                            <input type="datetime-local" class="form-control" formControlName="endDate">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <!-- <input type="text" class="form-control" formControlName="status" placeholder="Enter status"> -->
+                            <select formControlName="status" id="status" class="form-control"
+                                placeholder="Enter status">
+                                <option value="New">New</option>
+                                <option value="Upcoming">Upcoming</option>
+                                <option value="Active">Active</option>
+                                <option value="Running">Running</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            @if (projectForm.controls['competitionId'].value==0) {
+                            <button class="btn btn-success" type="submit" (click)="saveCompetition()">Save</button>
+                            } @else {
+                            <button class="btn btn-success" type="submit" (click)="updateCompetition()">Update</button>
+                            }
+                            <button class="btn btn-secondary" type="reset">Clear</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

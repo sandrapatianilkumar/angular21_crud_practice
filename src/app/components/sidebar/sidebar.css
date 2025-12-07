@@ -1,0 +1,21 @@
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: #343a40;
+}
+
+.nav-link {
+  color: #ccc;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.nav-link.active {
+  background: #0d6efd;
+  color: #fff !important;
+}
