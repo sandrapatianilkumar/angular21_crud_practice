@@ -9,6 +9,7 @@ import { DynamicCssClass } from './components/dynamic-css-class/dynamic-css-clas
 import { UserMaster } from './components/user-master/user-master';
 import { ReactiveUser } from './components/reactive-user/reactive-user';
 import { Projectcompetation } from './components/projectcompetation/projectcompetation';
+import { Signalformex } from './components/signalformex/signalformex';
 
 export const routes: Routes = [
     {
@@ -39,6 +40,8 @@ export const routes: Routes = [
     },
     {
         path: 'projectcompetation', component: Projectcompetation
+    },{
+        path: 'signalformex', component: Signalformex
     },
     {
         path: '**', component: Notfound
